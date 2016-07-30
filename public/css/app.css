@@ -624,7 +624,9 @@ button,
 
 input {
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  border: 1px solid silver;
+  padding: 10px; }
 
 .expenses {
   display: none; }

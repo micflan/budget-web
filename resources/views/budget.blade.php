@@ -31,7 +31,7 @@
             <p>Remaining Today</p>
         </header>
         <hr />
-        <!-- <h2>Extra Stuff!</h2> -->
+        <p class="spent">Spent Today: &euro; {{ $budget->spent() }}</p>
         <form action="{{ route('spend', $budget->getKey()) }}" method="post" class="well">
             {{ csrf_field() }}
             <div class="field">
@@ -50,7 +50,7 @@
         <hr />
         <footer>
             <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays() + 1 }} of {{ $budget->totalDays() }}</p>
-            <p class="spent">Spent Today: &euro; {{ $budget->spent() }}</p>
+            <p>{{ $budget->startDate()->format('jS F') }} &mdash; {{ $budget->endDate()->format('jS F') }}</p>
             <ul class="expenses">
                 @foreach ($budget->expenses() as $expense)
                     <li>
@@ -61,7 +61,6 @@
             </ul>
             <p>Total Savings: &euro; {{ $budget->savings() }}</p>
             <hr>
-            <p>{{ $budget->startDate()->format('jS F') }} &mdash; {{ $budget->endDate()->format('jS F') }}</p>
             <p>Starting cash: &euro; {{ $budget->startingCash() }}</p>
             <p>Remaining cash: &euro; {{ $budget->remainingCash() }}</p>
         </footer>
