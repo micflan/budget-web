@@ -31,11 +31,20 @@
             <p>Remaining Today</p>
         </header>
         <hr />
-        <p class="spent">Spent Today: &euro; {{ $budget->spent() }}</p>
+        <div id="expensesWrap">
+            <p class="spentToday">Spent Today: &euro; {{ $budget->spent() }}</p>
+            <ul class="expenses">
+                @foreach ($budget->expenses() as $expense)
+                    <li>
+                        <span class="value">&euro; {{ $expense->value() }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
         <form action="{{ route('spend', $budget->getKey()) }}" method="post" class="well">
             {{ csrf_field() }}
             <div class="field">
-                <input type="number" name="value" id="value" placeholder="Spend something?" step="any">
+                <input type="number" name="value" id="value" placeholder="New Expense" step="any">
             </div>
             <div class="field">
                 <input type="hidden" id="date" name="date" value="{{ date('Y-m-d') }}">
@@ -51,18 +60,11 @@
         <footer>
             <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays() + 1 }} of {{ $budget->totalDays() }}</p>
             <p>{{ $budget->startDate()->format('jS F') }} &mdash; {{ $budget->endDate()->format('jS F') }}</p>
-            <ul class="expenses">
-                @foreach ($budget->expenses() as $expense)
-                    <li>
-                        <span class="value">&euro; {{ $expense->value() }}</span>
-                        <span class="date">{{ $expense->date() }}</span>
-                    </li>
-                @endforeach
-            </ul>
-            <p>Total Savings: &euro; {{ $budget->savings() }}</p>
+            <p>Total Savings: &euro; {{ round($budget->savings(), 2) }}</p>
             <hr>
             <p>Starting cash: &euro; {{ $budget->startingCash() }}</p>
             <p>Remaining cash: &euro; {{ $budget->remainingCash() }}</p>
+            <p>Daily Budget: &euro; {{ $budget->dailyCash() }}</p>
         </footer>
     </section>
 
@@ -83,6 +85,20 @@
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
     }
     window.scrollTo(0,1);
+
+    function openExpenses()
+    {
+        if ( document.getElementById("expensesWrap").className.match(/(?:^|\s)open(?!\S)/) ) {
+            document.getElementById("expensesWrap").className = document.getElementById("expensesWrap").className.replace( /(?:^|\s)open(?!\S)/g , '' )
+        } else {
+            document.getElementById("expensesWrap").className += " open";
+        }
+    }
+
+    window.onload = function()
+    {
+        document.getElementById("expensesWrap").addEventListener( 'click' , openExpenses );
+    }
 </script>
 
 </body>

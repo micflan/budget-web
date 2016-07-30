@@ -628,9 +628,6 @@ input {
   border: 1px solid silver;
   padding: 10px; }
 
-.expenses {
-  display: none; }
-
 .spent {
   font-weight: bolder; }
 
@@ -641,5 +638,19 @@ button[type=submit] {
     border-color: forestgreen;
     color: forestgreen !important;
     box-shadow: 0px 0px 5px greenyellow; }
+
+#expensesWrap {
+  transition: background 0.5s;
+  border-radius: 5px; }
+  #expensesWrap .expenses {
+    display: none;
+    list-style: none;
+    padding: 0; }
+    #expensesWrap .expenses li {
+      display: inline-block; }
+  #expensesWrap.open {
+    background: #f5f5f5; }
+    #expensesWrap.open .expenses {
+      display: block; }
 
 /*# sourceMappingURL=app.css.map */
