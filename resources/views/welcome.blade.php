@@ -22,6 +22,8 @@
 
     <!-- Main -->
     <section id="main">
+        <h1>Budget</h1>
+        <hr>
         <form action="{{ route('create') }}" method="post" class="well">
             {{ csrf_field() }}
             <div class="field">
@@ -42,7 +44,9 @@
 
         <hr />
 
-        <form action="{{ route('load') }}" class="well">
+        <p>Create a budget and save to homescreen or bookmark the result. You will not be able to recover it otherwise.</p>
+
+        <form action="{{ route('load') }}" class="well" style="display: none">
             {{ csrf_field() }}
             <div class="field">
                 <input type="text" id="key" name="key" placeholder="Key">
@@ -58,6 +62,7 @@
     <!-- Footer -->
     <footer id="footer">
         <ul class="copyright">
+            <li>By <a href="http://michael.flanagan.ie/">micflan</a></li>
             <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </footer>

@@ -47,7 +47,7 @@
                 <input type="number" name="value" id="value" placeholder="New Expense" step="any">
             </div>
             <div class="field">
-                <input type="hidden" id="date" name="date" value="{{ date('Y-m-d') }}">
+                <input type="hidden" id="date" name="date" value="{{ date('Y-m-d H:i:s') }}">
             </div>
             <!-- <div class="field">
                 <textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
@@ -58,7 +58,7 @@
         </form>
         <hr />
         <footer>
-            <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays() + 1 }} of {{ $budget->totalDays() }}</p>
+            <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays()  }} of {{ $budget->totalDays() }}</p>
             <p>{{ $budget->startDate()->format('jS F') }} &mdash; {{ $budget->endDate()->format('jS F') }}</p>
             <p>Total Savings: &euro; {{ round($budget->savings(), 2) }}</p>
             <hr>
@@ -71,6 +71,7 @@
     <!-- Footer -->
     <footer id="footer">
         <ul class="copyright">
+            <li>By <a href="http://michael.flanagan.ie/">micflan</a></li>
             <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </footer>

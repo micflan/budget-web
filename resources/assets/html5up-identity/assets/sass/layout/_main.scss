@@ -69,6 +69,6 @@
 
 		body.is-loading & {
 			opacity: 0;
-			@include vendor('transform', 'rotateX(15deg)');
+			@include vendor('transform', 'rotateX(75deg)');
 		}
 	}
