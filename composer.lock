@@ -1735,12 +1735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/micflan/budget.git",
-                "reference": "08f0e036db4721ffbe538ed5897c629ae9abf053"
+                "reference": "160c9201c33edfea33c4307b3f51fbea32060575"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/micflan/budget/zipball/08f0e036db4721ffbe538ed5897c629ae9abf053",
-                "reference": "08f0e036db4721ffbe538ed5897c629ae9abf053",
+                "url": "https://api.github.com/repos/micflan/budget/zipball/160c9201c33edfea33c4307b3f51fbea32060575",
+                "reference": "160c9201c33edfea33c4307b3f51fbea32060575",
                 "shasum": ""
             },
             "require-dev": {
@@ -1763,7 +1763,7 @@
                 "source": "https://github.com/micflan/budget/tree/master",
                 "issues": "https://github.com/micflan/budget/issues"
             },
-            "time": "2016-07-30 21:23:18"
+            "time": "2016-07-31 00:40:08"
         },
         {
             "name": "vlucas/phpdotenv",
