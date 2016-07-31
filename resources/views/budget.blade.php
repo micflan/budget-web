@@ -58,7 +58,7 @@
         </form>
         <hr />
         <footer>
-            <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays()  }} of {{ $budget->totalDays() }}</p>
+            <p class="todayIs">Day {{ $budget->totalDays() - $budget->remainingDays() + 1  }} of {{ $budget->totalDays() }}</p>
             <p>{{ $budget->startDate()->format('jS F') }} &mdash; {{ $budget->endDate()->format('jS F') }}</p>
             <p>Total Savings: &euro; {{ round($budget->savings(), 2) }}</p>
             <hr>
