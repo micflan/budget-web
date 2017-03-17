@@ -44,7 +44,7 @@
         <form action="{{ route('spend', $budget->getKey()) }}" method="post" class="well">
             {{ csrf_field() }}
             <div class="field">
-                <input type="number" name="value" id="value" placeholder="New Expense" step="any">
+                <input type="number" name="value" id="value" placeholder="New Expense" step="any" value="{{ old('value') }}">
             </div>
             <div class="field">
                 <input type="hidden" id="date" name="date" value="{{ date('Y-m-d H:i:s') }}">
@@ -64,7 +64,7 @@
             <hr>
             <p>Starting cash: &euro; {{ $budget->startingCash() }}</p>
             <p>Remaining cash: &euro; {{ $budget->remainingCash() }}</p>
-            <p>Daily Budget: &euro; {{ $budget->dailyCash() }}</p>
+            <p>Daily Budget: &euro; {{ $budget->dailyBudget() }}</p>
         </footer>
     </section>
 
@@ -87,8 +87,7 @@
     }
     window.scrollTo(0,1);
 
-    function openExpenses()
-    {
+    function openExpenses() {
         if ( document.getElementById("expensesWrap").className.match(/(?:^|\s)open(?!\S)/) ) {
             document.getElementById("expensesWrap").className = document.getElementById("expensesWrap").className.replace( /(?:^|\s)open(?!\S)/g , '' )
         } else {
@@ -96,10 +95,13 @@
         }
     }
 
-    window.onload = function()
-    {
+    window.onload = function() {
         document.getElementById("expensesWrap").addEventListener( 'click' , openExpenses );
-    }
+    };
+
+    setTimeout(function() {
+        location.reload()
+    }, 120000);
 </script>
 
 </body>

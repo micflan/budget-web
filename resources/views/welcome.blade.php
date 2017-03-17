@@ -23,17 +23,28 @@
     <!-- Main -->
     <section id="main">
         <h1>Budget</h1>
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <p>
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </p>
+            </div>
+        @endif
+
         <hr>
         <form action="{{ route('create') }}" method="post" class="well">
             {{ csrf_field() }}
             <div class="field">
-                <input type="date" id="start-date" name="start-date" placeholder="End Date">
+                <input type="date" id="start-date" name="start-date" placeholder="Start Date" value="{{ old('start-date') }}">
             </div>
             <div class="field">
-                <input type="date" id="end-date" name="end-date" placeholder="Start Date">
+                <input type="date" id="end-date" name="end-date" placeholder="End Date" value="{{ old('end-date') }}">
             </div>
             <div class="field">
-                <input type="number" id="value" name="cash" placeholder="Amount">
+                <input type="number" id="value" name="cash" placeholder="Amount" value="{{ old('cash') }}">
             </div>
             <ul class="actions">
                 <li>

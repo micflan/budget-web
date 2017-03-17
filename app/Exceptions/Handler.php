@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -45,6 +46,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof TokenMismatchException){
+            //redirect to a form. Here is an example of how I handle mine
+            return back()->with('csrf_error',"Opps! Something went wrong. Please try again");
+        }
+
         return parent::render($request, $e);
     }
 }

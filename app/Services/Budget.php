@@ -80,10 +80,11 @@ class Budget
             ]);
         }
 
-        $expenses = array_filter($budget->expenses(), function(Expense $expense) {
+        $expenses = array_filter($budget->expenses()->all(), function(Expense $expense) {
             return $expense->isNew();
         });
 
+        /** @var Expense $expense */
         foreach ($expenses as $expense) {
             $db->expenses()->create([
                 'date' => $expense->date(),

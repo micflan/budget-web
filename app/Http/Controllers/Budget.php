@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BudgetRequest;
 use App\Services\Budget as BudgetService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -13,7 +14,7 @@ class Budget extends Controller
         return view('welcome');
     }
 
-    public function create(Request $request)
+    public function create(BudgetRequest $request)
     {
         $start = \DateTime::createFromFormat('Y-m-d', $request->get('start-date'));
         $end = \DateTime::createFromFormat('Y-m-d', $request->get('end-date'));
